@@ -1,0 +1,35 @@
+.over-page-modal-wrap {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    .backdrop {
+        height: 100%;
+        width: 100%;
+        background-color: #231f20;
+        opacity: 0.65;
+    }
+
+    .short-line {
+        background-color: #c2d5ed;
+        width: 30px;
+        height: 5px;
+        border-radius: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
+
+    .content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        background-color: #ffffff;
+        padding: 15px 30px 30px 30px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        transition: all 0.3s ease-in-out;
+    }
+}

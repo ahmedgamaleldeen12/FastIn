@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <div class="center-content auto-hight">
+    <form [formGroup]="form">
+      <ion-row class="ion-justify-content-center form-row">
+        <ion-col size="12" size-md="8" size-lg="6">
+          <div class="form">
+            <div class="form-input">
+              <ion-label position="stacked">{{ 'Data.Username' | translate }}</ion-label>
+              <ion-item lines="none">
+                <ion-input formControlName="userName" name="username" type="text"
+                  placeholder="{{ 'Data.Username' | translate }}" required></ion-input>
+                <ion-icon name="person-outline" size="small" slot="start"></ion-icon>
+              </ion-item>
+            </div>
+            <div class="form-input">
+              <ion-label position="stacked">{{ 'Data.Password' | translate }}</ion-label>
+              <ion-item lines="none">
+                <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" name="password"
+                  placeholder="{{ 'Data.Password' | translate }}" clearOnEdit="false" required></ion-input>
+                <ion-icon name="bag-outline" size="small" slot="start"></ion-icon>
+                <ion-icon (click)="togglePasswordType()" [name]="passwordToggleIcon" size="small" slot="end"
+                  class="toggle-password-icon"></ion-icon>
+              </ion-item>
+            </div>
+            <div>
+              <ion-row>
+                <ion-col offset-sm="">
+                  <ion-item class="checkbox"  lines="none" style="--background : transparent">
+                    <ion-label>{{ 'Data.RememberMe' | translate }} </ion-label>
+                    <ion-checkbox formControlName="rememberMe" slot="start" name="rememberMe"></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </div>
+            <ion-button (click)="login()" class="submit-btn" color="primary" expand="block" type="submit">
+              {{ 'Data.Login' | translate }}
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="lang-row ion-justify-content-center">
+        <ion-col class="ion-padding-end ion-text-center" size="12" size-md="8" size-lg="6">
+          @if(!base.isEnglish()){
+            <ion-button class="ion-button-class" color="primary" expand="block" 
+            (click)="base.setLanguage('en')" shape="round" size="small">
+            English
+          </ion-button>
+          }
+          @if(base.isEnglish()){
+            <ion-button class="ion-button-class" color="primary" expand="block" 
+            (click)="base.setLanguage('ar')" shape="round" size="small">
+            عربى
+          </ion-button>
+          }
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

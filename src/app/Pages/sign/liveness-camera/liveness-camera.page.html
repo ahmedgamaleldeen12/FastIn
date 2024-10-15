@@ -1,0 +1,7 @@
+<div class="centered-container">
+  <div class="camera-container">
+      <video #videoElement autoplay muted playsinline class="video-element"></video>
+      <canvas #overlayCanvas class="overlay-canvas"></canvas>
+  </div>
+</div>
+<p *ngIf="result" [ngStyle]="{'color': result.includes('Real') ? 'red' : 'green'}">{{ result }}</p>

@@ -1,0 +1,48 @@
+.main-header {
+  --background: #f6f9fd;
+  --color: #231f20;
+}
+
+// .filter-wrap {
+//   .date {
+//     color: #abbbcf;
+//   }
+// }
+
+.icons {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .filter-icon {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .icon {
+    color: #e84855;
+    background-color: #fce5e7;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid #e84855;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      zoom: 1.5;
+    }
+  }
+}
+.footer-btn {
+  background-color: #ffffff;
+  padding: 15px;
+}
+
+.action-btns {
+  margin-top: 30px;
+  .btn {
+    width: 100%;
+  }
+}

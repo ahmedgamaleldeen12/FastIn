@@ -1,0 +1,182 @@
+.attendance-item-wrap {
+  border-left: 2px solid #419aeb;
+
+  .mini-content {
+    position: relative;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(194, 213, 237, 0.3),
+      0 6px 20px 0 rgba(194, 213, 237, 0.3);
+
+    .header {
+      margin-bottom: 10px;
+    }
+
+    .content {
+      font-size: 0.8rem;
+
+      .name {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .name,
+      .icon {
+        color: #8594a7;
+      }
+
+      .time {
+        .title {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+
+        .time {
+          &.OUT {
+            color: #e84855;
+          }
+
+          &.IN {
+            color: #27e700;
+          }
+
+          &.Rejected {
+            color: #798380;
+          }
+        }
+      }
+
+      .status {
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+
+        &.present {
+          color: #147ad6;
+          background-color: #147ad630;
+        }
+
+        &.absence {
+          color: #e84855;
+          background-color: #e8485530;
+        }
+
+        &.restDay {
+          background-color: #fdc01c;
+        }
+
+        &.lateIn {
+          color: #e84855;
+          background-color: #e8485530;
+        }
+
+        &.earlyOut {
+          color: #e84855;
+          background-color: #e8485530;
+        }
+
+        &.weekend {
+          background-color: #646464;
+        }
+      }
+    }
+
+    .expand-icons {
+      transition: all 0.2s ease-in-out;
+
+      &.expanded {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .expanded-content {
+    overflow: hidden;
+    padding: 0;
+    height: 0;
+    transition: all 0.2s ease-in-out;
+
+    &.expanded {
+      height: auto;
+      padding: 15px;
+    }
+
+    hr {
+      background-color: #abbbcf45;
+
+      height: 2px;
+    }
+
+    .permission-date {
+      .title {
+        color: #8594a7;
+
+        p.date {
+          color: #147ad6;
+        }
+      }
+
+      img {
+        max-height: 222px;
+      }
+    }
+
+    .details {
+      background-color: #e7eef88c;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .leader {
+      align-items: flex-end;
+
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+
+      .text {
+        margin-right: auto;
+        margin-left: 15px;
+
+        .date {
+          color: #97aac2;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .creation-date {
+      color: #434343;
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 15px;
+    }
+  }
+
+  .text-center {
+    text-align: center;
+  }
+}
+
+.attendance-item-wrap.lang-ar {
+  border-left: unset;
+  border-right: 2px solid #419aeb;
+
+  .leader {
+    .text {
+      margin-right: 15px !important;
+      margin-left: auto !important;
+    }
+  }
+
+  .mini-content {
+    .expand-icons {
+      &.expanded {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}

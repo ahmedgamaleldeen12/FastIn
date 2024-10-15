@@ -1,0 +1,27 @@
+<div (click)="showModal()" class="icon sort-icon">
+  <ion-icon *ngIf="sortTypeId == 0" src="assets/icons/sortDesyn.svg"></ion-icon>
+  <ion-icon *ngIf="sortTypeId == 1" src="assets/icons/sortAsyn.svg"></ion-icon>
+  <ion-icon *ngIf="sortTypeId == 2" name="people-outline"></ion-icon>
+  <ion-icon *ngIf="sortTypeId == 3" name="stats-chart-outline"></ion-icon>
+</div>
+
+<ng-template #filterContent>
+  <div class="filter-content">
+    <div class="form">
+      <div class="form-input filter">
+        <ion-item>
+          <ion-select style="padding: initial" [okText]="'Data.Ok' | translate" [cancelText]="'Data.Cancel' | translate"
+            placeholder="{{ 'Data.Sort' | translate}}" [(ngModel)]="sortTypeId" (ionChange)="changeSort()">
+            <ion-select-option *ngFor="let type of sortTypes" [value]="type.id">
+              {{type?.name}}
+            </ion-select-option>
+          </ion-select>
+          <ion-icon *ngIf="sortTypeId == 0" src="assets/icons/sortDesyn.svg" size="small" slot="start"></ion-icon>
+          <ion-icon *ngIf="sortTypeId == 1" src="assets/icons/sortAsyn.svg" size="small" slot="start"></ion-icon>
+          <ion-icon *ngIf="sortTypeId == 2" name="people-outline" size="small" slot="start"></ion-icon>
+          <ion-icon *ngIf="sortTypeId == 3" name="stats-chart-outline" size="small" slot="start"></ion-icon>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,61 @@
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px;
+  background: linear-gradient(to top left, rgb(114 114 114 / 70%), rgb(227 227 227 / 30%)), url("../../../assets/images/SmartIn-Background.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.logo img{
+  border-radius: 5px;
+}
+
+.form {
+  width: 100%;
+  .submit-btn {
+    margin-top: 2rem;
+  }
+
+  .forget-btn {
+    margin-top: 1rem;
+  }
+}
+
+.form-header {
+  margin-bottom: 1.3rem;
+  text-align: center;
+    font-weight: 600;
+}
+
+.footer-text {
+  margin-top: auto;
+  font-size: 1.5rem;
+  color: #434343;
+}
+
+.ion-button-class{
+  width: fit-content;
+}
+
+.form-row,.lang-row{
+  width: 100%;
+  ion-button{
+    margin: auto;
+  }
+}
+
+.lang-row{
+  ion-button{
+    margin: auto;
+  }
+}
+
+
+.form-input ion-item {
+  border-radius: 5px;
+   border: none !important; 
+  margin-top: 5px !important;
+}

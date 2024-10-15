@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="main-header" style="--background: #fdfdfd">
+    <ion-buttons>
+      <ion-back-button text="{{'Data.Back' | translate }}" defaultHref="/sign"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{'Card.Log' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" style="--background: #f7f7f7"> 
+  <app-header-sort-area [currentCount]="currentCount" [totalCount]="totalCount" [fromDate]="filter.startDate"
+    [toDate]="filter.endDate" [ascSortType]="ascSortType" (sort)="sortData($event)" > <!--(filter)="openModal()"-->
+  </app-header-sort-area>
+  <div class="card-items">
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngFor="let item of list">
+      <div class="mt-15">
+        <app-logs-list-list-item [item]="item"></app-logs-list-list-item>
+      </div>
+    </ng-container>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" [loadingText]="'Data.loading' | translate">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

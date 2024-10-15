@@ -1,0 +1,27 @@
+<div class="attendance-item-wrap present" [ngClass]="{ 'lang-ar': !localize.isEnglish() }">
+  <div (click)="toggleExpand()" class="mini-content">
+    <div class="header d-flex">
+      <p class="m-0">{{ item.timeEntry | localizedDate : true}} </p>
+      <div class="expand-icons" [ngClass]="{ expanded: isExpanded }">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="content d-flex">
+      <span class="time">
+        <span class="text-dimmed title">{{ 'Data.LogType' | translate }}</span>
+        <span class="time" [ngClass]="item?.logTypeNameEn.toUpperCase()">{{ this.localize.isEnglish()?
+          item?.logTypeNameEn:item?.logTypeNameAr }}</span>
+      </span>
+      <span class="status present">{{ this.localize.isEnglish() ? item?.remarkEn :item?.remarkAr }}</span>
+    </div>
+    <div class="expanded-content" [ngClass]="{ expanded: isExpanded }">
+      <hr />
+      <div class="permission-date from" style="text-align: center;">
+        <p class="title m-0">{{ 'Data.Image' | translate }}</p>
+        <p>
+          <img style="width: auto;" [src]="item.actionImage?item.actionImage:'/assets/images/user.jpg'" alt="shot image" />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

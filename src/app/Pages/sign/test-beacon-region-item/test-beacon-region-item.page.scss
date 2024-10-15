@@ -1,0 +1,37 @@
+ion-content ion-toolbar {
+    --background: translucent;
+}
+
+ion-item {
+    --border-style: none;
+    width: 100%;
+    /* border: 1px solid black; */
+    margin: 5px;
+    padding: 0px;
+}
+
+ion-input {
+    border: 1px solid black;
+    margin: 0px;
+}
+
+ion-label {
+    padding: 0px;
+    margin: 0px;
+}
+
+.notifi-badge {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 10px;
+    border-radius: 11px;
+}
+
+.status-dot {
+    position: absolute;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

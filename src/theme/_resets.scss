@@ -1,0 +1,160 @@
+body {
+  &.lang-en {
+    direction: ltr;
+    text-align: left;
+  }
+
+  &.lang-ar {
+    direction: rtl;
+    text-align: right;
+    
+  }
+}
+
+p,
+span {
+  color: #434343;
+}
+
+.item-input ion-icon {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.form-radio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 7px;
+
+  .radio-item {
+    display: flex;
+  }
+  ion-radio,
+  ion-checkbox {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .radio .radio-icon {
+    visibility: visible !important;
+  }
+
+  .radio .radio-icon:before {
+    content: '' !important;
+    border: 2px solid black !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+  }
+
+  .radio .radio-icon:after {
+    content: '' !important;
+    position: absolute !important;
+    right: 20px !important;
+    top: 22px !important;
+    background: black !important;
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    transition: -webkit-transform 0.28s cubic-bezier(0.42, 0, 0, 1.65);
+    transition: transform 0.28s cubic-bezier(0.42, 0, 0, 1.65);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  .radio.item-radio > input[type='radio']:checked ~ .radio-icon:after {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  .radio .item-content {
+    background-color: #fff;
+    margin: 0;
+    padding-right: 50px;
+    padding-left: 0px;
+  }
+
+  .radio.item-radio > input[type='radio']:checked ~ .item-content {
+    background-color: #fff;
+  }
+
+  .radio-inline.item {
+    display: inline-block;
+    border: none;
+    margin: 0;
+    height: 50px;
+  }
+}
+
+
+
+.picker-toolbar  {
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 7px;
+  justify-content: space-between !important;
+
+  .picker-toolbar-button:last-child  button{
+    font-weight: bold !important;
+    letter-spacing: 0.3px;
+  }
+}
+
+.alert-button-group{
+  justify-content: space-between !important;
+}
+
+//******************Arabic Directions******************
+.lang-ar .action-btns{
+  flex-direction: row-reverse !important;
+}
+
+
+.lang-ar .picker-wrapper .picker-toolbar  {
+  flex-direction: row-reverse !important;
+
+}
+
+.lang-ar  .alert-button-group{
+  flex-direction: row-reverse;
+}
+
+
+//****************** English Directions******************
+
+.lang-en .action-btns{
+  flex-direction: row-reverse !important;
+}
+
+
+.lang-en .picker-wrapper .picker-toolbar  {
+  flex-direction: row !important;
+
+}
+
+
+.lang-en  .alert-button-group{
+  flex-direction: row  !important;
+}
+
+
+@media screen and (max-width: 400px) {
+  .item-native .item-inner{
+    padding: 0 !important;
+  }
+  ion-item{
+    margin: 0 !important;
+    .item-inner{
+      padding: 0 !important;
+    }
+  }
+  ion-card{
+    margin: 4px !important;
+  }
+}

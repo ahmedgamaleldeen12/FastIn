@@ -1,0 +1,25 @@
+<div class="sort-area" [class]="isStciky ? '' :'nav-sticky'">
+  <div class="filter-wrap d-flex">
+    <div class="date">
+      <p>{{ 'Data.Count' | translate }} : {{ currentCount}} / {{ totalCount }}</p>
+      <p *ngIf="type == 1">{{dayDate | localizedDate}} </p>
+      <p *ngIf="type == 2">{{fromDate | localizedDate}} -  {{toDate | localizedDate}}</p>
+      <p *ngIf="type == 3">{{dayDate | localizedMonthYear}} </p>
+      <p *ngIf="type == 4">{{'Data.Year' | translate}} : {{year}} </p>
+
+    </div>
+    <div class="filter-icon">
+      <div class="icons m-0">
+        <ion-button  *ngIf="useDownload" color="danger" (click)="showDownloadPdf()" >
+          <ion-icon name="cloud-download-outline"></ion-icon>
+        </ion-button>
+
+        <div *ngIf="useFilter" (click)="showFilterModal()" class="icon filter-icon">
+          <ion-icon name="funnel-sharp"></ion-icon>
+        </div>
+          <app-admin-sort *ngIf="useSort && isAdmin" slot="end" [sortTypeId]="sortTypeId" [Typesort]="Typesort" [fieldNames]="fieldNames" (sortData)="sortDataAdmin($event)"></app-admin-sort>
+          <app-inquiry-sort *ngIf="useSort && !isAdmin" [ascSortType]="ascSortType" (sortData)="sortData($event)"></app-inquiry-sort>
+      </div>
+    </div>
+  </div>
+</div>

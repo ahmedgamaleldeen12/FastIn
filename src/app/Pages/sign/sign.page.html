@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+    <div style="display: flex; justify-content: space-between">
+      <div class="info p-15">
+        <h3 style="color: #eb445a" class="name">{{'organization.Hi' | translate}} {{employeNumber}}</h3>
+        <div class="organization">
+          <ion-icon name="person-circle-outline" size="small" slot="start"></ion-icon>
+          <span color="light">{{employeeFirstName}}</span>
+        </div>
+      </div>
+      <div>
+        <ion-icon name="menu-outline" class="p-15" size="large" (click)="showModal()"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scroll-y="false" color="dark">
+  <ion-segment [value]="typeSelect" mode="ios" [(ngModel)]="typeSelect" (ionChange)="ionViewWillEnter();"
+    style="--background: transparent">
+    <ion-segment-button value="2" (click)="toggleColors2('Beacon');">
+      <ion-item style="--background: transaprent" lines="none">
+        <ion-icon [color]="BeaconColor" name="bluetooth-outline" slot="start"></ion-icon><ion-label
+          [color]="BeaconColor">{{'signPage.beacon' |translate}}</ion-label>
+      </ion-item>
+    </ion-segment-button>
+
+    <ion-segment-button value="0" (click)="toggleColors2('GPS')">
+      <ion-item style="--background: transaprent" lines="none">
+        <ion-icon [color]="GPSColor" name="locate-outline" slot="start"></ion-icon><ion-label
+          [color]="GPSColor">{{'signPage.gps' |translate}}</ion-label>
+      </ion-item>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div style="padding: 0 4px 8px 4px">
+    <ion-segment [value]="signData.logTypeId" mode="md" class="ion-margin-top" [(ngModel)]="signData.logTypeId">
+      <ion-segment-button value="2" (click)="toggleColors('signout')" style="--color-checked: #eb445a"
+        *ngIf="typeSelect == '2'">
+        <ion-item style="--background: transaprent" lines="none">
+          <ion-icon [color]="signOutColor" slot="start" name="finger-print-outline"></ion-icon>
+          <ion-label [color]="signOutColor">{{'Data.signout' |translate}}</ion-label>
+        </ion-item>
+      </ion-segment-button>
+
+      <ion-segment-button value="1" (click)="toggleColors('signin')" style="--color-checked: #2dd36f">
+        <ion-item style="--background: transaprent" lines="none">
+          <ion-icon [color]="signInColor" slot="start" name="finger-print-outline"></ion-icon><ion-label
+            [color]="signInColor">{{'Data.signIN' |translate}}</ion-label>
+        </ion-item>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <ion-row *ngIf="typeSelect == '0'">
+    <ion-col>
+      <ion-button style="height: 130px" [color]="currentLocation.active ? 'success' : 'danger'" expand="block"
+        (click)="locateUser(false)">
+        <ion-icon name="locate" slot="start"></ion-icon>
+        <h4 style="
+            margin: 0 6px;
+            white-space: initial;
+            text-transform: capitalize;
+          ">
+          {{currentLocation.nameFl}}
+        </h4>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="typeSelect == '2'">
+    <ion-col size-md="6" offset-md="3">
+      <ion-button expand="block" (click)="showBeaconModal()" color="primary">
+        <ion-icon src="card-outline" slot="start"></ion-icon>
+        {{'signPage.chooseBeacon' | translate}}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-card *ngIf="typeSelect == '2' && beaconInfo !== null && beaconInfo !== undefined">
+    <ion-card-content style="padding: 1px 2px">
+      <ion-item>
+        <ion-label>
+          <div [ngStyle]="{'background-color':  beaconInfo.active ? 'green' : 'red'}" class="status-dot"></div>
+          <h1 style="margin: 0 16px">{{beaconInfo.beaconNameEn}}</h1>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-row *ngIf="imageTest!=''">
+    <ion-col>
+      <div class="text-center">
+        <ion-img class="text-center" style="border-radius: 5px" [src]="this.imageTest"></ion-img>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-fab vertical="bottom" horizontal="start" (click)="openCameraPage()">
+    <ion-fab-button
+      size="large"
+      color="primary"
+      [disabled]="signUserStatus!= 0 "
+    >
+      <ion-icon size="large" name="camera" class="camera-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button size="large" [disabled]="!activated" [color]="activated ? 'success' : 'danger'"
+      (click)="onSubmit()">
+      {{'signPage.apply' | translate}}
+      <ion-icon size="small" name="save-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+
+
+
+
+
+
+
+<ng-template #menu>
+  <div class="menu-wrap">
+    <div (click)="navigate('/face-registration');" class="item">
+      <span class="icon">
+        <img src="../../../../assets/images/faceID.png" alt="" style="scale: 0.75" />
+      </span>
+      <span class="text">{{ 'Data.FaceID' | translate }}</span>
+    </div>
+    <div (click)="navigate('/list-logs');" class="item">
+      <span class="icon">
+        <img src="../../../../assets/images/log.png" alt="" style="scale: 0.75" />
+      </span>
+      <span class="text">{{ 'Card.Log' | translate }}</span>
+    </div>
+    <div *ngIf="base.isEnglish()" (click)="base.setLanguage('ar'); toggleMenu();" class="item">
+      <span class="icon">
+        <ion-icon name="language-outline" slot="start"></ion-icon>
+      </span>
+      <span class="text">عربي</span>
+    </div>
+    <div *ngIf="!base.isEnglish()" (click)="base.setLanguage('en'); toggleMenu();" class="item">
+      <span class="icon">
+        <ion-icon name="language-outline" slot="start"></ion-icon>
+      </span>
+      <span class="text">English</span>
+    </div>
+    <div class="item active" (click)="logOut()">
+      <span class="icon">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      </span>
+      <span class="text">{{ 'Data.Logout' | translate }}</span>
+    </div>
+  </div>
+</ng-template>

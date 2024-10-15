@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon color="light" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" color="dark">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large" class="ion-text-center">{{'signPage.beaconsScanner' | translate}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-progress-bar type="indeterminate" *ngIf="scanStatus"
+    [style.display]="scanStatus ? 'block' : 'none'"></ion-progress-bar>
+
+  <ion-item-divider color="primary" *ngIf="scanStatus">
+    <ion-label style="max-width: 290px;">
+      <b>{{scanStatus ? ('signPage.scanNearby' | translate) : ('signPage.startScan' | translate) }}</b>
+    </ion-label>
+    <ion-spinner name="lines-small" color="light" [style.display]="scanStatus ? 'block' : 'none'"></ion-spinner>
+  </ion-item-divider>
+  <ion-card *ngFor="let beacon of beaconsList; let i = index ">
+    <ion-card-content style="padding: 2px;">
+      <ion-button (click)="testBtn()" style="display: none;" id="testinIds1">Refresh</ion-button>
+      <app-test-beacon-region-item [scanStatus]="scanStatusSubject" [beacon]="beacon" [beaconIndex]="i"
+        [lastIndex]="beaconsList.length" [scaningIndex]="scaningIndex" [iosDevice]="iosDevice"
+        (selectBeaconScan)="selectBeacon($event)" (finished)="finishedScanning($event)"></app-test-beacon-region-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab *ngIf="beaconsList !== null && beaconsList.length > 0" vertical="bottom" horizontal="end" slot="fixed"
+    (click)="onScanClicked()">
+    <ion-fab-button [color]='scanStatus ? "danger" : "primary"'>
+      <ion-icon *ngIf="scanStatus" name="pause-sharp" style="font-size: 25px;"></ion-icon>
+      <ion-icon *ngIf="!scanStatus" name="play-sharp" style="font-size: 25px;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

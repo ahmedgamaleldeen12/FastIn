@@ -1,0 +1,174 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Resets */
+@import './theme/resets';
+@import './theme/custom-classes';
+
+ion-item.checkbox {
+    --ion-background-color: #04040400 !important;
+    border-radius: 5px;
+  }
+  
+  .item-native .item-inner {
+    padding: 0 !important;
+  }
+  
+  ion-item {
+    margin: 0 !important;
+  
+    .item-inner {
+      padding: 0 !important;
+    }
+  }
+  
+  ion-card {
+    margin: 4px !important;
+  }
+  
+  .logo {
+    max-width: 30% !important;
+    max-height: 30% !important;
+  }
+  
+  
+  
+  
+  @media screen and (max-width:768px) {
+    .logo {
+      max-width: 45% !important;
+      max-height: 45% !important;
+    }
+  
+  }
+  
+  @media screen and (max-width:425px) {
+    .logo {
+      max-width: 50% !important;
+      max-height: 45% !important;
+    }
+  }
+  
+  // .center-content,
+  @media screen and (min-width:768px) {
+  
+  
+    .desktop-resize,
+    .attendance-wrap,
+    .main-departments-wrap {
+      width: 90% !important;
+      margin: auto !important;
+    }
+  
+    #background-content>div {
+      width: 60% !important;
+      margin: auto !important;
+    }
+  
+  }
+  
+  
+  main {
+    overflow: visible !important;
+  }
+  
+  ion-content>main {
+    overflow: visible !important;
+  }
+  
+  .WaitingRequest {
+    color: yellowgreen;
+  }
+  
+  .NewRequest {
+    color: blue;
+  }
+  
+  .ApprovedRequest {
+    color: green;
+  }
+  
+  .RejectedRequest {
+    color: #C45810;
+  }
+  
+  .RemovedRequest {
+    color: red;
+  }
+  
+  .PostedRequest {
+    color: red;
+  }
+  
+  .splashImage {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  
+  
+  .ionic-selectable-css {
+    ion-footer ion-toolbar {
+      direction: ltr;
+    }
+  }
+  
+  
+  .alert-wrapper.sc-ion-alert-md {
+    border-radius: 30px !important;
+  
+  }
+  
+  .picker-wrapper {
+    top: 8%;
+    --border-radius: 31px;
+    --height: 29%;
+    --width: 88%;
+  }
+  
+  .cameraPreview {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.60);
+    border-radius: 50%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+  }

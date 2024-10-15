@@ -1,0 +1,9 @@
+<div class="over-page-modal-wrap" [ngClass]="{ hide: service.toggle }">
+  <div class="backdrop" (click)="service.toggleShow()"></div>
+  <div class="content">
+    <div class="short-line" (click)="service.toggleShow()"></div>
+    <div class="form">
+      <ng-container *ngTemplateOutlet="service.template"></ng-container>
+    </div>
+  </div>
+</div>

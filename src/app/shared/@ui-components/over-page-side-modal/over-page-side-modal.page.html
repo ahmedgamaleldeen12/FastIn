@@ -1,0 +1,13 @@
+<div class="over-page-modal-wrap" [ngClass]="{
+    hide: !service.toggle,
+    'lang-ar': !lang.isEnglish(),
+    'lang-en': lang.isEnglish()
+  }">
+  <div class="backdrop" (click)="service.toggleShow()"></div>
+  <div class="content">
+    <div class="short-line" (click)="service.toggleShow()"></div>
+    <div class="form">
+      <ng-container *ngTemplateOutlet="service.template"></ng-container>
+    </div>
+  </div>
+</div>

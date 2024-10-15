@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <div class="modal-wrap">
+    <div class="backdrop"></div>
+    <div class="filter-content">
+      <ion-row>
+        <ion-col size="9">
+          <h3 class="title">{{'Data.filter' | translate}}</h3>
+        </ion-col>
+        <ion-col class="close-icon" size="3">
+          <ion-buttons>
+            <ion-button color="primary" (click)="close()">
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+
+      <div class="form">
+        <div class="form-input filter">
+          <ion-label position="stacked">{{'Data.StartDate' | translate}}</ion-label>
+          <ion-item>
+            <ion-datetime [(ngModel)]="filter.startDate"
+              cancelText="{{'Data.Cancel' | translate}}" doneText="{{'Data.Ok' | translate}}" [max]="maxData"
+              [monthNames]="'Data.Months' | translate">
+            </ion-datetime>
+            <ion-icon name="calendar-clear-outline" size="small" slot="start"></ion-icon>
+          </ion-item>
+        </div>
+
+        <div class="form-input filter">
+          <ion-label position="stacked">{{'Data.EndDate' | translate}}</ion-label>
+          <ion-item>
+            <!-- <ion-datetime [(ngModel)]="filter.endDate"
+              cancelText="{{'Data.Cancel' | translate}}" doneText="{{'Data.Ok' | translate}}" [max]="maxData"
+              [monthNames]="'Data.Months' | translate">
+            </ion-datetime> -->
+            <ion-datetime value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
+
+
+
+            <ion-icon name="calendar-clear-outline" size="small" slot="start"></ion-icon>
+          </ion-item>
+        </div>
+        <div class="form-input filter">
+          <ion-label position="stacked">{{ 'Data.LogStatus' | translate}} </ion-label>
+          <ion-item>
+            <ion-select multiple="true" [okText]="'Data.Ok' | translate" [cancelText]="'Data.Cancel' | translate"
+              [(ngModel)]="filter.logTypeId" interface="action-sheet">
+              <ion-select-option *ngFor="let item of statuslist" [value]="item.id">
+                {{ this.localize.isEnglish() ? item.nameEn:item.nameAr}}
+              </ion-select-option>
+            </ion-select>
+            <ion-icon name="stats-chart-outline" size="small" slot="start"></ion-icon>
+          </ion-item>
+        </div>
+        <!-- <div class="form-input filter">
+          <ion-label position="stacked">{{ 'Data.LogType' | translate}} </ion-label>
+          <ion-item>
+            <ion-select multiple="false" [okText]="'Data.Ok' | translate" [cancelText]="'Data.Cancel' | translate"
+              [(ngModel)]="filter.logWayId" interface="action-sheet">
+              <ion-select-option *ngFor="let item of logTypeslist" [value]="item.id">
+                {{ this.localize.isEnglish() ? item.nameEn:item.nameAr}}
+              </ion-select-option>
+            </ion-select>
+            <ion-icon name="stats-chart-outline" size="small" slot="start"></ion-icon>
+          </ion-item>
+        </div> -->
+        <div class="action-btns d-flex">
+          <div class="btn reset-btn">
+            <ion-button (click)="resetFilter()" class="submit-btn" color="light" expand="full">
+              {{ 'Data.Clear' | translate }}
+            </ion-button>
+          </div>
+          <div class="btn apply-btn">
+            <ion-button (click)="apply()" class="submit-btn" color="primary" expand="full">
+              {{ 'Data.Apply' | translate }}
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
